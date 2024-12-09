@@ -22,7 +22,7 @@ sock.addEventListener("message", (msg) => {
   }
 })
 
-// 2. Gdy otrzymasz od drugiej strony kandydata, dodaj go do swojego pc
+// 3. Gdy otrzymasz od drugiej strony kandydata, dodaj go do swojego pc
 async function handleCandidate(candidate) {
   if (candidate.candidate == null) {
     await pc.addIceCandidate(null);
@@ -31,16 +31,16 @@ async function handleCandidate(candidate) {
   }
 }
 
-// 3. Gdy otrzymasz ofertę:
+// 5. Gdy otrzymasz ofertę:
 async function handleOffer(offer) {
-  // 3.1. Zaaplikuj ofertę
+  // 5.1. Zaaplikuj ofertę
   await pc.setRemoteDescription(offer);
 
-  // 3.2. Utwórz i zaaplikuj odpowiedź
+  // 5.2. Utwórz i zaaplikuj odpowiedź
   const answer = await pc.createAnswer();
   await pc.setLocalDescription(answer);
 
-  // 3.3. Przekaż odpowiedź drugiej stronie
+  // 5.3. Przekaż odpowiedź drugiej stronie
   const answerMsg = answerToMsg(answer);
   sock.send(answerMsg);
 }
@@ -56,7 +56,7 @@ async function init() {
   pc = new RTCPeerConnection();
 
   pc.onicecandidate = async (ev) => {
-    // 4. Gdy wygenerujemy kandydata, przekaż go drugiej stronie
+    // 2. Gdy wygenerujemy kandydata, przekaż go drugiej stronie
     const msg = candidateEventToMsg(ev);
     sock.send(msg);
   };

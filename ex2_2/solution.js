@@ -17,16 +17,17 @@ const remotePlayer = document.getElementById('remotePlayer');
         urls: [
           "turn:bigfish.jellyfish.ovh:3478?transport=udp",
           "turn:bigfish.jellyfish.ovh:3478?transport=tcp",
-          "turns:bigfish.jellyfish.ovh:3478?transport=tcp"
+          "turns:bigfish.jellyfish.ovh:5349?transport=tcp"
         ],
         username: "turnuser",
         credential: "c1gAaF2Arycz7I3CKd4QvA"
       }
-    ]
+    ],
+    // iceTransportPolicy: 'relay'
   });
 
   // 1. Dodaj event handler, który wypisze każdego znalezionego kandydata
-  pc.onicecandidate = (ev) => {console.log(ev.candidate);};
+  pc.onicecandidate = (ev) => { console.log(ev.candidate); };
 
   localStream.getTracks().forEach(track => pc.addTrack(track, localStream));
 
