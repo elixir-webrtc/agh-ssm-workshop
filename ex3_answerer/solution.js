@@ -75,7 +75,7 @@ init();
 
 // Funkcje pomocnicze
 
-export function connectSignaling(id) {
+function connectSignaling(id) {
   const sock = new WebSocket(`wss://bigfish.jellyfish.ovh/signaling/${id}`);
   sock.addEventListener("open", () => {
     console.log(`Signaling socket open (server ${id})`);
@@ -84,21 +84,21 @@ export function connectSignaling(id) {
   return sock;
 }
 
-export function offerToMsg(offer) {
+function offerToMsg(offer) {
   return JSON.stringify({
     type: 'offer',
     sdp: offer.sdp
   })
 }
 
-export function answerToMsg(answer) {
+function answerToMsg(answer) {
   return JSON.stringify({
     type: 'answer',
     sdp: answer.sdp
   })
 }
 
-export function candidateEventToMsg(event) {
+function candidateEventToMsg(event) {
   const message = {
     type: 'candidate',
     candidate: null,
