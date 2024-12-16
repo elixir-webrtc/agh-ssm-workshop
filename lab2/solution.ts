@@ -80,7 +80,7 @@ async function connect() {
 
   });
 
-  // 3. Zaimplementuj handler eventu `trackReady`, emitowanego w momencie, gdy zdalny track zdanie się gotowy do odtworzenia
+  // 3. Zaimplementuj handler eventu `trackReady`, emitowanego w momencie, gdy zdalny track stanie się gotowy do odtworzenia
   //      (~= gdy ktoś dołączy do rozmowy)
   client.on('trackReady', createVideoTile);
 

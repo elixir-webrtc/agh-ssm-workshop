@@ -67,7 +67,7 @@ async function connect() {
     // 2.3. Poinformuj `client`, że chciałbyś przesłać track wideo znajdujący się w streamie
   });
 
-  // 3. Zaimplementuj handler eventu `trackReady`, emitowanego w momencie, gdy zdalny track zdanie się gotowy do odtworzenia
+  // 3. Zaimplementuj handler eventu `trackReady`, emitowanego w momencie, gdy zdalny track stanie się gotowy do odtworzenia
   //      (~= gdy ktoś dołączy do rozmowy)
 
   // 4. Zaimplementuj handler eventu `trackRemoved`, emitowanego po usunięciu zdalnego tracka
