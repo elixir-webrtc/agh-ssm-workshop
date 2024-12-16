@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Fishjam Cloud example</title>
+</head>
+
+<body>
+  <div style="gap: 20px;">
+    <label for="usernameInput">Username: </label>
+    <input type="text" id="usernameInput" />
+    <button id="button">Join room</button>
+    <br/><br/>
+
+    <div style="display: flex; flex-wrap: wrap; flex-direction: row; width: 100%;" id="videoContainers">
+      <div style="padding: 2px">
+        <video id="localPlayer" autoplay controls muted></video>
+        <p id="localUsername"></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/script.ts"></script>
+</body>
+
+</html>
