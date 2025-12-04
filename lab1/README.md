@@ -1,4 +1,4 @@
-# AGH SSM 2024 WebRTC Workshop
+# AGH SSM 2025 WebRTC Workshop
 
 ## Part 1
 
