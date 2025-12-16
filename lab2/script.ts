@@ -14,14 +14,11 @@ type PeerMetadata = {
   name: string;
 };
 
-// Główny token Fishjam Cloud używany do tworzenia peerTokenów
-const FISHJAM_CLOUD_TOKEN = '79cefca530b24f6e82e01f8a57dbc721';
-
-// Zapasowy token -- gdyby coś nie działało :)
-// const FISHJAM_CLOUD_TOKEN = '5ca6fc07ebab4ccaa57086fa9ffa4447';
-
 // Nazwa pokoju -- zmiana spowoduje dorzucenie Cię do innego pokoju niż pozostali
 const ROOM_NAME = 'super-fun-room';
+
+// Url do serwera multimedialnego (SFU)
+const FISHJAM_URL = "https://fishjam.io/api/v1/connect/66c9033103864721b448dbce12f129e8"
 
 
 // Funkcja wywoływana po wciśnięciu przycisku "Join room"
@@ -41,22 +38,23 @@ async function connect() {
   //     zarządzanie `peerToken`ami byłoby zadaniem logiki biznesowej backendu
   //        (i odbywałoby się przy użyciu serwerowego SDK).
   const response = await fetch(
-    `https://cloud.fishjam.work/api/v1/connect/${FISHJAM_CLOUD_TOKEN}/room-manager/?roomName=${ROOM_NAME}&peerName=${username}`
+    `https://bigfish.jellyfish.ovh/api/rooms?roomName=${ROOM_NAME}&peerName=${username}`
   );
+
   if (response.status !== 200) {
     return console.error("Error: failed to create peer token", response);
   }
   console.log(`Generated peer token for user ${username}, room ${ROOM_NAME}`);
 
-  // Odczytaj token i URL pokoju z odpowiedzi
-  const { peerToken: token, url: url } = await response.json();
+  // Odczytaj token z odpowiedzi
+  const { peerToken: token } = await response.json();
 
   const client = new FishjamClient<PeerMetadata>();
 
   /////////////////////////////////////////////////////////////////////////////
   // TWOJA KOLEJ
   // 1. Połącz się z serwerem Fishjam
-  //      - użyj `peerToken` i `url` odczytanych wyżej
+  //      - użyj `peerToken` odczytanych wyżej
   //      - wykorzystaj pole `peerMetadata`, by poinformować innych o swoim `username`
   //          (hint: zrób obiekt pasujący do typu zdefiniowanego w linii 13.)
 
