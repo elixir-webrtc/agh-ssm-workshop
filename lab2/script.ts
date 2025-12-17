@@ -57,15 +57,18 @@ async function connect() {
   //      - użyj `peerToken` odczytanych wyżej
   //      - wykorzystaj pole `peerMetadata`, by poinformować innych o swoim `username`
   //          (hint: zrób obiekt pasujący do typu zdefiniowanego w linii 13.)
+  // Dokumentacja: https://bigfish.jellyfish.ovh/docs/classes/FishjamClient.html#connect
 
   // 2. Zaimplementuj handler eventu `joined`, emitowanego po poprawnym dołączeniu do pokoju
   client.on('joined', async (_peerId, _peersInRoom) => {
     // 2.1. Uzyskaj stream z kamery (tylko wideo, bez audio)
     // 2.2. Ustaw stream jako źródło dla `localPlayer`
     // 2.3. Poinformuj `client`, że chciałbyś przesłać track wideo znajdujący się w streamie
+    // Dokumentacja: https://bigfish.jellyfish.ovh/docs/classes/FishjamClient.html#addtrack
   });
 
-  // 3. Zaimplementuj handler eventu `trackReady`, emitowanego w momencie, gdy zdalny track stanie się gotowy do odtworzenia
+  // 3. Zaimplementuj handler eventu `trackReady` (podobnie jak powyzej dla eventu `joined`).
+  //    Emitowanego w momencie, gdy zdalny track stanie się gotowy do odtworzenia
   //      (~= gdy ktoś dołączy do rozmowy)
 
   // 4. Zaimplementuj handler eventu `trackRemoved`, emitowanego po usunięciu zdalnego tracka
